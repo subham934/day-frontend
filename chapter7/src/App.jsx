@@ -2,6 +2,30 @@ import { useState } from "react";
 import Card from "./Card";
 
 const App = () => {
+
+  const [count, setCount] = useState(0)
+  const [postData, setPostData] = useState([
+    {
+      id: 1,
+      name: "Arjun Mehta",
+      desc: "Just deployed my first full-stack app 🚀 feels unreal!",
+      likeCount: 0,
+    },
+    {
+      id: 2,
+      name: "Priya Sharma",
+      desc: "Golden hour at Bandra Worli Sea Link 🌅 Mumbai never disappoints.",
+      likeCount: 0,
+    },
+    {
+      id: 3,
+      name: "Kabir Singh",
+      desc: "Finally cracked the DSA round — hard work pays off 💪",
+      likeCount:0,
+    },
+  ])
+
+ 
   const a = 10;
 
   const [value, setValue] = useState(0);
@@ -15,6 +39,13 @@ const App = () => {
     // setValue((prev) => prev + 1);
     // setValue((prev) => prev + 1);
   };
+
+  const like = ()=>{
+    setCount(count+1)
+    
+  }
+
+  
   return (
     <>
       <div className="bg-gray-600 w-full h-screen flex flex-col items-center justify-center gap-5">
@@ -36,7 +67,7 @@ const App = () => {
           </button>
         </div>
       </div>
-      <Card/>
+      <Card postData={postData} count={count} like={like}/>
     </>
   );
 };
