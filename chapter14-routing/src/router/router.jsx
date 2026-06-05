@@ -1,0 +1,36 @@
+import { createBrowserRouter } from "react-router";
+import App from "../App";
+import Home from "../screens/Home";
+import About from "../screens/About";
+import Contact from "../screens/Contact";
+import Service from "../screens/Service";
+import NotFound from "../screens/NotFound";
+
+export const Router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "service",
+        element: <Service />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
+  },
+]);
