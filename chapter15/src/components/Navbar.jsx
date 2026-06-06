@@ -37,7 +37,7 @@ const Navbar = () => {
         ))}
         <button
           onClick={() => navigate("/auth")}
-          className="px-4 py-1.5 rounded-xl cursor-pointer text-sm font-medium transition-all duration-200 bg-white/20 text-white shadow-sm"
+          className="px-4 py-1.5 rounded-xl cursor-pointer text-sm font-medium transition-all duration-200 bg-pink-500 text-white shadow-sm hover:bg-pink-600"
         >
           Login
         </button>
