@@ -96,3 +96,26 @@ graph TD
         *   **If loading:** Shows a spinner.
         *   **If error:** Shows an error message.
         *   **If data exists:** Maps through the user list and renders custom, interactive card components showing each user's information.
+
+
+
+# 📂 Full-Stack Data Flow Notes: Backend to Frontend Connection
+
+This document serves as a complete reference for how data flows seamlessly between an Express backend and a React frontend managed via Redux Toolkit (RTK) and Custom Hooks.
+
+---
+
+## 🗺️ Architectural Diagram
+
+The following lifecycle represents the unidirectional data flow triggered when a user opens the application:
+
+```mermaid
+graph TD
+    App[App.jsx] -->|1. Invokes Hook| Hook[useUser.js]
+    Hook -->|2. Dispatches Thunk via useEffect| Slice[userSlice.jsx]
+    Slice -->|3. Sets Loading=True & Calls API| API[api.js]
+    API -->|4. HTTP GET Request| Server[server.js (Express)]
+    Server -->|5. Returns JSON Data| API
+    API -->|6. Resolves Promise with data| Slice
+    Slice -->|7. Sets Loading=False & Updates State| Store[store.js]
+    Store -->|8. Selector Triggers Re-render| App
